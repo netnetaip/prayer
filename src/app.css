@@ -1,0 +1,343 @@
+/* Root */
+:root {
+	--rad100: calc(100 * var(--point));
+	--rad50: .6rem;
+	--color-black: #000;
+	--color-dark: #808080;
+	--color-grey: #DADADA;
+	--color-ghost: #F6F6F6;
+	--color-blue: #0022E0;
+	--point: 2px;
+}
+::-webkit-scrollbar {
+	display: none;
+}
+
+/* Fonts */
+@font-face {
+	font-family: wals-med;
+	src: url('/font/wals-med.woff2');
+}
+
+@font-face {
+	font-family: wals-reg;
+	src: url('/font/wals-reg.woff2');
+}
+
+/* Semantics */
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	/* border: 1px dashed red; */
+}
+
+html, body {
+	max-width: 100%;
+	min-width: 100%;
+}
+
+main {
+	height: 100vh;
+	overflow: hidden;
+}
+
+main, header {
+	max-width: 1280px;
+	width: 100%;
+}
+
+/* Font Settings */
+h1, h2, h3, h4, a, button, p, small, label, dt, dd, th, td, li {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-weight: normal;
+	font-display: swap;
+	line-height: 1.4;
+	text-decoration: none;
+}
+
+h1, h2, h4, a, label, dt, th, button {
+	color: var(--color-black);
+	font-family: "wals-med", Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", sans-serif;
+}
+
+h3, dd, td, small, ol > li {
+	color: var(--color-dark);
+	font-family: "wals-reg", Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", sans-serif;
+}
+
+h3, p, dd, td, small, ol > li {
+	font-family: "wals-reg", Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", sans-serif;
+}
+
+/* Font Sizes */
+h1 {
+	font-size: clamp(1.75rem, 1.75rem + 0vw, 1.75rem);
+}
+
+h2, h3, p, a {
+	font-size: clamp(1rem, 0.95rem + 0.2vw, 1.125rem);
+}
+
+button, dt, dd, label {
+	font-size: clamp(0.875rem, 0.825rem + 0.2vw, 1rem);
+}
+
+small, li {
+	font-size: clamp(0.75rem, 0.7rem + 0.2vw, 0.875rem);
+}
+
+/* Flexbox */
+body, header, menu, nav, a, ul, ol, li, main, div, article, section, progress, form, label, dl, input, details, button, figure {
+	display: flex;
+}
+
+/* Direction */
+body, main, div, dl, section {
+	flex-direction: column;
+}
+
+/* Align Start */
+section {
+	align-items: flex-start;
+	align-content: flex-start;
+}
+
+/* Align Stretch */
+article {
+	align-items: stretch;
+	align-content: stretch;
+}
+
+/* Align Center */
+body, menu, header, a, button, figure {
+	align-items: center;
+	align-content: center;
+}
+
+/* Justify Stretch */
+body, article, button {
+	justify-items: stretch;
+	justify-content: stretch;
+}
+
+/* Justify Between */
+header, form {
+	justify-items: space-between;
+	justify-content: space-between;
+}
+
+/* Progress Bar */
+progress {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	-webkit-appearance: none;
+	appearance: none;
+	height: calc(2 * var(--point));
+}
+::-webkit-progress-bar {
+	background-color: transparent;
+}
+::-webkit-progress-value {
+	background-color: black;
+	transition: all .2s ease-in;
+}
+
+/* Menu */
+body > header {
+	max-width: 100%;
+	width: 100%;
+	padding: 0 calc(14 * var(--point));
+	background-color: white;
+	position: sticky;
+	top: 0;
+	z-index: 100;
+}
+
+header a {
+	min-height: calc(32 * var(--point));
+	max-height: calc(32 * var(--point));
+	height: 100%;
+}
+
+/* Backdrop Filter */
+/* @supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+	body > header {
+		background-color: rgba(255, 255, 255, 0.8);
+		backdrop-filter: blur(calc(10 * var(--point)));
+		-webkit-backdrop-filter: blur(calc(10 * var(--point)));
+	}
+} */
+
+/* Filters */
+/* form {
+	min-height: calc(30 * var(--point));
+	max-height: calc(30 * var(--point));
+	height: 100%;
+	padding: 0 calc(6 * var(--point));
+	overflow-x: auto;
+	overflow-y: hidden;
+	border-bottom: 1px solid var(--color-grey);
+	background-color: white;
+	align-items: center;
+	align-content: center;
+}
+fieldset {
+	display: flex;
+	gap: calc(4 * var(--point));
+	width: 100%;
+	border: none;
+}
+label {
+	max-height: calc(40 * var(--point));
+	color: var(--color-dark);
+	padding: calc(4 * var(--point)) calc(6 * var(--point));
+	border-radius: var(--rad50);
+	position: relative;
+}
+label:hover {
+	cursor: pointer;
+	background-color: var(--color-ghost);
+}
+label > svg {
+	min-height: calc(8 * var(--point));
+	max-height: calc(8 * var(--point));
+	height: 100%;
+	min-width: calc(8 * var(--point));
+	max-width: calc(8 * var(--point));
+	width: 100%;
+	margin-right: calc(4 * var(--point));
+	stroke: var(--color-dark);
+}
+input[type=radio] {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	display: none;
+}
+
+input[type=radio]:checked + label {
+	color: black;
+}
+
+input[type=radio]:checked + label > svg {
+	stroke: black;
+}
+
+input[type=radio]:checked + label::after {
+	content: "";
+	display: block;
+	height: var(--point);
+	width: calc(100% - 12 * var(--point));
+	background-color: var(--color-black);
+	position: absolute;
+	bottom: calc(var(--point) * -5 - 1px);
+	left: 0;
+	right: 0;
+	margin: auto;
+} */
+
+/* Button */
+button {
+	background: none;
+	border: none;
+}
+
+/* Card List */
+main > section {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(max(30%, min(calc(150 * var(--point)), 100%)), 1fr));
+	padding: calc(12 * var(--point)) 0;
+	overflow: auto;
+	max-width: 100%;
+	width: 100%;
+}
+
+section > h1 {
+	padding: 0 calc(14 * var(--point));
+}
+
+section > button {
+	max-width: 100%;
+	width: 100%;
+	height: calc(30 * var(--point));
+	padding: calc(6 * var(--point));
+	justify-content: center;
+	border-radius: var(--rad50);
+	background-color: var(--color-ghost);
+}
+
+section > nav > a:hover {
+	background-color: var(--color-grey);
+}
+
+main > section > article {
+	padding: calc(12 * var(--point)) calc(14 * var(--point));
+	min-width: 100%;
+	max-width: 100%;
+	width: 100%;
+	gap: calc(4 * var(--point));
+	align-self: stretch;
+	border-bottom: 1px solid var(--color-grey);
+}
+
+main > section > article > div {
+	gap: calc(4 * var(--point));
+	max-width: 100%;
+	width: 100%;
+}
+
+article > div > figure {
+	gap: calc(6 * var(--point));
+}
+
+article > div > figure > img {
+	min-width: calc(16 * var(--point));
+	max-width: calc(16 * var(--point));
+	width: 100%;
+	min-height: calc(16 * var(--point));
+	max-height: calc(16 * var(--point));
+	height: 100%;
+	border-radius: var(--rad50);
+	background-color: var(--color-grey);
+}
+
+dl {
+	max-width: 100%;
+	width: 100%;
+}
+
+dl > dd {
+	display: -webkit-box;
+	-webkit-line-clamp: 6;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+
+article > button {
+	min-width: calc(14 * var(--point));
+	max-width: calc(14 * var(--point));
+	width: 100%;
+	min-height: calc(14 * var(--point));
+	max-height: calc(14 * var(--point));
+	height: 100%;
+	padding: calc(2 * var(--point));
+}
+
+article > button > svg {
+	width: 100%;
+	height: 100%;
+}
+
+/* Media Rules */
+@media (prefers-reduced-motion: reduce) {
+	body {
+		transition: none;
+	}
+}
+
+@media (min-width: 600px) {
+}
